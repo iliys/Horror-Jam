@@ -4,11 +4,6 @@ const SPEED = 2 # по углам колбасит
 #потом починю. может быть. 
 # а может это из за пп и комично маленького количества пикселей на экране
 
-
-#func _ready():
-#	print("lmao ready")
-#var char_velocity = Vector2.ZERO
-
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("Rightward") - Input.get_action_strength("Leftward")

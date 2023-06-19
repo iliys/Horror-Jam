@@ -82,7 +82,7 @@ polygon = PackedVector2Array(3, -2, 1, 8, 2, 200, 258, 200, 258, 168, 310, 167, 
 
 [node name="ScreenLoader" type="Area2D" parent="Screen 1/screen collisions"]
 script = ExtResource("4_1v0hb")
-GOTO_X = 490
+GOTO_X = 190
 GOTO_Y = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen 1/screen collisions/ScreenLoader"]
