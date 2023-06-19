@@ -1,25 +1,109 @@
-[gd_scene load_steps=5 format=3 uid="uid://cv6me03xyrfkm"]
+[gd_scene load_steps=9 format=3 uid="uid://cv6me03xyrfkm"]
 
-[ext_resource type="Texture2D" uid="uid://dk4op0vj4fb5h" path="res://textures/test_Friendly.png" id="2_5rong"]
-[ext_resource type="Script" path="res://scripts/Player.gd" id="2_fplg3"]
+[ext_resource type="PackedScene" uid="uid://h0oc1ilf7rlm" path="res://player.tscn" id="2_btmsj"]
 [ext_resource type="Texture2D" uid="uid://d3ic220t2l0rj" path="res://textures/test_Hostile.png" id="2_n7tot"]
+[ext_resource type="Script" path="res://scripts/ScreenLoader.gd" id="4_1v0hb"]
+[ext_resource type="Texture2D" uid="uid://cnvkqg0il5l58" path="res://images/win.png" id="4_ab1uh"]
+[ext_resource type="Script" path="res://scripts/CameraController.gd" id="5_tbdrq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fcxi"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvuyr"]
 size = Vector2(12, 9)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7mgl"]
+size = Vector2(46, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1audv"]
+size = Vector2(250, 187)
+
 [node name="Playground" type="Node2D"]
+z_index = 10
 
 [node name="TestHostile" type="Sprite2D" parent="."]
 position = Vector2(90, 80)
 texture = ExtResource("2_n7tot")
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(20, 20)
-script = ExtResource("2_fplg3")
+[node name="Player" parent="." instance=ExtResource("2_btmsj")]
 
-[node name="TestFriendly" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_5rong")
+[node name="Area2D" type="Area2D" parent="Player" groups=["Player"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_2fcxi")
+shape = SubResource("RectangleShape2D_rvuyr")
+
+[node name="Screen 0" type="Node2D" parent="."]
+position = Vector2(128, 96)
+
+[node name="scene background placeholder" type="Sprite2D" parent="Screen 0"]
+z_index = -10
+texture = ExtResource("4_ab1uh")
+
+[node name="screen collisions" type="StaticBody2D" parent="Screen 0"]
+
+[node name="room walls" type="CollisionPolygon2D" parent="Screen 0/screen collisions"]
+editor_description = "im inside your walls, beatch"
+position = Vector2(-130, -104)
+polygon = PackedVector2Array(3, -2, 1, 8, 2, 200, 258, 200, 258, 168, 310, 167, 309, 8, 259, 9, 2, 8, 4, -4, 339, -13, 331, 208, -40, 223, -4, 7)
+
+[node name="ScreenLoader" type="Area2D" parent="Screen 0/screen collisions"]
+script = ExtResource("4_1v0hb")
+GOTO_X = 490
+GOTO_Y = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen 0/screen collisions/ScreenLoader"]
+position = Vector2(154, -16.5)
+shape = SubResource("RectangleShape2D_b7mgl")
+
+[node name="CameraHandler" type="Node2D" parent="Screen 0"]
+
+[node name="Camera2D" type="Camera2D" parent="Screen 0/CameraHandler"]
+enabled = false
+
+[node name="Area2D" type="Area2D" parent="Screen 0/CameraHandler"]
+script = ExtResource("5_tbdrq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen 0/CameraHandler/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1audv")
+
+[node name="Screen 1" type="Node2D" parent="."]
+position = Vector2(541, 96)
+rotation = 3.14159
+
+[node name="scene background placeholder" type="Sprite2D" parent="Screen 1"]
+z_index = -10
+texture = ExtResource("4_ab1uh")
+
+[node name="screen collisions" type="StaticBody2D" parent="Screen 1"]
+
+[node name="room walls" type="CollisionPolygon2D" parent="Screen 1/screen collisions"]
+editor_description = "im inside your walls, beatch"
+position = Vector2(-130, -104)
+polygon = PackedVector2Array(3, -2, 1, 8, 2, 200, 258, 200, 258, 168, 310, 167, 309, 8, 259, 9, 2, 8, 4, -4, 339, -13, 331, 208, -40, 223, -4, 7)
+
+[node name="ScreenLoader" type="Area2D" parent="Screen 1/screen collisions"]
+script = ExtResource("4_1v0hb")
+GOTO_X = 490
+GOTO_Y = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen 1/screen collisions/ScreenLoader"]
+position = Vector2(154, -16.5)
+shape = SubResource("RectangleShape2D_b7mgl")
+
+[node name="CameraHandler" type="Node2D" parent="Screen 1"]
+
+[node name="Camera2D" type="Camera2D" parent="Screen 1/CameraHandler"]
+enabled = false
+
+[node name="Area2D" type="Area2D" parent="Screen 1/CameraHandler"]
+script = ExtResource("5_tbdrq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen 1/CameraHandler/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1audv")
+
+[connection signal="body_entered" from="Screen 0/screen collisions/ScreenLoader" to="Screen 0/screen collisions/ScreenLoader" method="_on_body_entered"]
+[connection signal="body_entered" from="Screen 0/CameraHandler/Area2D" to="Screen 0/CameraHandler/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Screen 0/CameraHandler/Area2D" to="Screen 0/CameraHandler/Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="Screen 1/screen collisions/ScreenLoader" to="Screen 1/screen collisions/ScreenLoader" method="_on_body_entered"]
+[connection signal="body_entered" from="Screen 1/CameraHandler/Area2D" to="Screen 1/CameraHandler/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Screen 1/CameraHandler/Area2D" to="Screen 1/CameraHandler/Area2D" method="_on_body_exited"]

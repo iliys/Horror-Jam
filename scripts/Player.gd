@@ -19,3 +19,10 @@ func _physics_process(delta):
 	else:
 		velocity=Vector2.ZERO
 	move_and_collide(velocity * SPEED) # если дельту поставить то хуже будет
+
+
+
+
+
+
+
