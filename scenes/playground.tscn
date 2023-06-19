@@ -1,9 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv6me03xyrfkm"]
+[gd_scene load_steps=5 format=3 uid="uid://cv6me03xyrfkm"]
 
 [ext_resource type="Texture2D" uid="uid://dk4op0vj4fb5h" path="res://textures/test_Friendly.png" id="2_5rong"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="2_fplg3"]
+[ext_resource type="Texture2D" uid="uid://d3ic220t2l0rj" path="res://textures/test_Hostile.png" id="2_n7tot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fcxi"]
+size = Vector2(12, 9)
 
 [node name="Playground" type="Node2D"]
 
-[node name="TestFriendly" type="Sprite2D" parent="."]
-position = Vector2(40, 73)
+[node name="TestHostile" type="Sprite2D" parent="."]
+position = Vector2(90, 80)
+texture = ExtResource("2_n7tot")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(20, 20)
+script = ExtResource("2_fplg3")
+
+[node name="TestFriendly" type="Sprite2D" parent="Player"]
 texture = ExtResource("2_5rong")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_2fcxi")
