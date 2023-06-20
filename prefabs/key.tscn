@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnc15vifg1ogu"]
+[gd_scene load_steps=3 format=3 uid="uid://dnc15vifg1ogu"]
 
 [ext_resource type="PackedScene" uid="uid://bs8cy42fly2f8" path="res://prefabs/point_of_interest.tscn" id="1_lqkt0"]
+[ext_resource type="Texture2D" uid="uid://osjd45qkno5k" path="res://images/key.png" id="2_ylho3"]
 
 [node name="Key" instance=ExtResource("1_lqkt0")]
 POI_TYPE = "Key"
 KeyID = "0"
+
+[node name="Key" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_ylho3")

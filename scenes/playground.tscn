@@ -115,8 +115,8 @@ position = Vector2(640, -256)
 [node name="RoomU" parent="." instance=ExtResource("8_pw2j1")]
 position = Vector2(320, 256)
 
-[node name="Key" parent="." instance=ExtResource("10_0wne7")]
-position = Vector2(56, 72)
-
 [node name="DoorObject" parent="." instance=ExtResource("9_jww0l")]
 position = Vector2(32, 104)
+
+[node name="Key" parent="." instance=ExtResource("10_0wne7")]
+position = Vector2(64, 80)
