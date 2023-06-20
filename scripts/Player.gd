@@ -27,12 +27,18 @@ func action():
 	if (in_interactable_zone):
 		match near.POI_TYPE:
 			"Key":
+				print(near.KeyID)
 				keys.append(near.KeyID)
-				near.set_process(false)
-				print("keying key")
+				#near.set_process(false)
+				near.process_mode = 4
+				near.hide()
+				
 		match near.POI_TYPE:
 			"Door":
-				print("Doorin' door")
+				if near.KeyID in keys:
+					near.open_door()
+				else:
+					attack()
 			"Note":
 				if near.noteimg.is_visible_in_tree() == false:
 					near.show_note()

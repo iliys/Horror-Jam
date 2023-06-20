@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://oor4foa5baab"]
+
+[ext_resource type="PackedScene" uid="uid://bs8cy42fly2f8" path="res://prefabs/point_of_interest.tscn" id="1_ynoso"]
+[ext_resource type="Texture2D" uid="uid://dh2x8c0ymgd7g" path="res://images/block.png" id="2_nyeau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d76xn"]
+size = Vector2(16, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cgycg"]
+radius = 24.0
+
+[node name="DoorObject" instance=ExtResource("1_ynoso")]
+POI_TYPE = "Door"
+KeyID = "0"
+
+[node name="CollisionShape2D" parent="." index="0"]
+disabled = true
+
+[node name="Door" type="StaticBody2D" parent="." index="1"]
+
+[node name="DoorPlaceholder" type="Sprite2D" parent="Door" index="0"]
+z_index = 1
+rotation = 3.14159
+scale = Vector2(0.991717, -3.00966)
+texture = ExtResource("2_nyeau")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" index="1"]
+shape = SubResource("RectangleShape2D_d76xn")
+
+[node name="DoorOpen" type="Node2D" parent="." index="2"]
+visible = false
+
+[node name="DoorOpenPlaceholder" type="Sprite2D" parent="DoorOpen" index="0"]
+position = Vector2(0, 5.68434e-14)
+scale = Vector2(1.00828, 3.00966)
+texture = ExtResource("2_nyeau")
+
+[node name="CustomDoorTriggerZone" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CircleShape2D_cgycg")
