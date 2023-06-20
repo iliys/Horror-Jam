@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhvj7ysh2kx81"]
+
+[ext_resource type="Texture2D" uid="uid://cnvkqg0il5l58" path="res://images/win.png" id="1_wq468"]
+[ext_resource type="Script" path="res://scripts/ScreenLoader.gd" id="2_b62ci"]
+[ext_resource type="Script" path="res://scripts/CameraController.gd" id="3_7hsgj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7mgl"]
+size = Vector2(16, 190)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1audv"]
+size = Vector2(250, 187)
+
+[node name="Screen 0" type="Node2D"]
+position = Vector2(128, 96)
+
+[node name="scene background placeholder" type="Sprite2D" parent="."]
+z_index = -10
+texture = ExtResource("1_wq468")
+
+[node name="screen collisions" type="StaticBody2D" parent="."]
+
+[node name="room walls" type="CollisionPolygon2D" parent="screen collisions"]
+editor_description = "im inside your walls, beatch"
+position = Vector2(-130, -103)
+polygon = PackedVector2Array(1, 6, 1, 200, 258, 200, 309, 200, 309, 6, 2, 6, 2, 0, 318, 0, 318, 209, -4, 209, -4, 6)
+
+[node name="ScreenLoader" type="Area2D" parent="screen collisions"]
+script = ExtResource("2_b62ci")
+TRANSITION_TYPE = "Horizontal"
+GOTO_X = 425
+GOTO_Y = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="screen collisions/ScreenLoader"]
+position = Vector2(136, 0)
+shape = SubResource("RectangleShape2D_b7mgl")
+
+[node name="CameraHandler" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="CameraHandler"]
+enabled = false
+
+[node name="Area2D" type="Area2D" parent="CameraHandler"]
+script = ExtResource("3_7hsgj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraHandler/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1audv")
+
+[connection signal="body_entered" from="screen collisions/ScreenLoader" to="screen collisions/ScreenLoader" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraHandler/Area2D" to="CameraHandler/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="CameraHandler/Area2D" to="CameraHandler/Area2D" method="_on_body_exited"]

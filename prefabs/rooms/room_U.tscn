@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj4s4wmcbrr1f"]
+
+[ext_resource type="PackedScene" uid="uid://c0hdrj1r7xpjx" path="res://prefabs/room_mother.tscn" id="1_euthw"]
+[ext_resource type="PackedScene" uid="uid://cmger1giq81ry" path="res://prefabs/transition_trigger.tscn" id="2_y0hgi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0lyw"]
+size = Vector2(256, 8)
+
+[node name="RoomU" instance=ExtResource("1_euthw")]
+
+[node name="CollisionPolygon2D" parent="Collision and transition handler" index="0"]
+position = Vector2(0, -8)
+polygon = PackedVector2Array(-8, -8, -8, 208, 264, 208, 264, -8, 0, -8, 0, 0, 256, 0, 256, 200, 0, 200, 0, -8)
+
+[node name="TransitionTrigger" parent="Collision and transition handler" index="1" instance=ExtResource("2_y0hgi")]
+position = Vector2(-8.75, 191.5)
+TRANSITION_TYPE = "Vertical"
+TRANSITION_DIR = "-"
+
+[node name="CollisionShape2D" parent="Collision and transition handler/TransitionTrigger" index="0"]
+position = Vector2(136.75, -195.5)
+shape = SubResource("RectangleShape2D_q0lyw")
+
+[editable path="Collision and transition handler/TransitionTrigger"]

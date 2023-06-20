@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1ce81cy30bpg"]
+
+[ext_resource type="PackedScene" uid="uid://c0hdrj1r7xpjx" path="res://prefabs/room_mother.tscn" id="1_osbeb"]
+[ext_resource type="PackedScene" uid="uid://cmger1giq81ry" path="res://prefabs/transition_trigger.tscn" id="2_hp0a4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_506oe"]
+size = Vector2(8, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8no3h"]
+size = Vector2(8, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcw6g"]
+size = Vector2(258, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lcpq"]
+size = Vector2(256, 8)
+
+[node name="RoomLRUD" instance=ExtResource("1_osbeb")]
+
+[node name="CollisionPolygon2D" parent="Collision and transition handler" index="0"]
+position = Vector2(-8, -8)
+polygon = PackedVector2Array(0, 0, 272, 0, 272, 208, 0, 208, 0, 0, -8, -8, -8, 216, 280, 216, 280, -8, -8, -8)
+
+[node name="TransitionTrigger" parent="Collision and transition handler" index="1" instance=ExtResource("2_hp0a4")]
+position = Vector2(256.524, -11.5696)
+TRANSITION_TYPE = "Horizontal"
+
+[node name="CollisionShape2D" parent="Collision and transition handler/TransitionTrigger" index="0"]
+position = Vector2(3.47638, 107.57)
+shape = SubResource("RectangleShape2D_506oe")
+
+[node name="TransitionTrigger2" parent="Collision and transition handler" index="2" instance=ExtResource("2_hp0a4")]
+position = Vector2(256.524, -11.5696)
+TRANSITION_TYPE = "Horizontal"
+TRANSITION_DIR = "-"
+
+[node name="CollisionShape2D" parent="Collision and transition handler/TransitionTrigger2" index="0"]
+position = Vector2(-260.524, 107.57)
+shape = SubResource("RectangleShape2D_8no3h")
+
+[node name="TransitionTrigger3" parent="Collision and transition handler" index="3" instance=ExtResource("2_hp0a4")]
+position = Vector2(256.524, -11.5696)
+TRANSITION_TYPE = "Vertical"
+TRANSITION_DIR = "-"
+
+[node name="CollisionShape2D" parent="Collision and transition handler/TransitionTrigger3" index="0"]
+position = Vector2(-129.524, 7.56957)
+shape = SubResource("RectangleShape2D_qcw6g")
+
+[node name="TransitionTrigger4" parent="Collision and transition handler" index="4" instance=ExtResource("2_hp0a4")]
+position = Vector2(256.524, -11.5696)
+TRANSITION_TYPE = "Vertical"
+
+[node name="CollisionShape2D" parent="Collision and transition handler/TransitionTrigger4" index="0"]
+position = Vector2(-128.524, 207.57)
+shape = SubResource("RectangleShape2D_8lcpq")
+
+[editable path="Collision and transition handler/TransitionTrigger"]
+[editable path="Collision and transition handler/TransitionTrigger2"]
+[editable path="Collision and transition handler/TransitionTrigger3"]
+[editable path="Collision and transition handler/TransitionTrigger4"]

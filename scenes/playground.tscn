@@ -1,19 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cv6me03xyrfkm"]
+[gd_scene load_steps=10 format=3 uid="uid://cv6me03xyrfkm"]
 
 [ext_resource type="PackedScene" uid="uid://h0oc1ilf7rlm" path="res://player.tscn" id="2_btmsj"]
 [ext_resource type="Texture2D" uid="uid://d3ic220t2l0rj" path="res://textures/test_Hostile.png" id="2_n7tot"]
-[ext_resource type="Script" path="res://scripts/ScreenLoader.gd" id="4_1v0hb"]
-[ext_resource type="Texture2D" uid="uid://cnvkqg0il5l58" path="res://images/win.png" id="4_ab1uh"]
-[ext_resource type="Script" path="res://scripts/CameraController.gd" id="5_tbdrq"]
+[ext_resource type="PackedScene" uid="uid://cx3ev47mdtven" path="res://prefabs/rooms/room_R.tscn" id="3_w7jdg"]
+[ext_resource type="PackedScene" uid="uid://b1ce81cy30bpg" path="res://prefabs/rooms/room_lrud.tscn" id="4_fli2s"]
+[ext_resource type="PackedScene" uid="uid://8nq8dygq8fsu" path="res://prefabs/rooms/room_lr.tscn" id="5_j5fag"]
+[ext_resource type="PackedScene" uid="uid://bcjny2ug7h6cu" path="res://prefabs/rooms/room_L.tscn" id="6_f87wv"]
+[ext_resource type="PackedScene" uid="uid://bvrbr5yvj1o7s" path="res://prefabs/rooms/room_DR.tscn" id="7_bw4kc"]
+[ext_resource type="PackedScene" uid="uid://dj4s4wmcbrr1f" path="res://prefabs/rooms/room_U.tscn" id="8_pw2j1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvuyr"]
 size = Vector2(12, 9)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7mgl"]
-size = Vector2(46, 190)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1audv"]
-size = Vector2(250, 187)
 
 [node name="Playground" type="Node2D"]
 z_index = 10
@@ -30,82 +27,88 @@ texture = ExtResource("2_n7tot")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_rvuyr")
 
-[node name="Screen 0" type="Node2D" parent="."]
-position = Vector2(128, 96)
+[node name="Debug texts" type="Node2D" parent="."]
+position = Vector2(8, 0)
 
-[node name="scene background placeholder" type="Sprite2D" parent="Screen 0"]
-z_index = -10
-texture = ExtResource("4_ab1uh")
+[node name="RichTextLabel" type="RichTextLabel" parent="Debug texts"]
+offset_right = 80.0
+offset_bottom = 24.0
+text = "screen 0"
+metadata/_edit_use_anchors_ = true
 
-[node name="screen collisions" type="StaticBody2D" parent="Screen 0"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="Debug texts"]
+offset_left = 320.0
+offset_right = 400.0
+offset_bottom = 24.0
+text = "screen 1"
+metadata/_edit_use_anchors_ = true
 
-[node name="room walls" type="CollisionPolygon2D" parent="Screen 0/screen collisions"]
-editor_description = "im inside your walls, beatch"
-position = Vector2(-130, -104)
-polygon = PackedVector2Array(3, -2, 1, 8, 2, 200, 258, 200, 310, 200, 310, 167, 309, 8, 259, 9, 2, 8, 4, -4, 339, -13, 331, 208, -40, 223, -4, 7)
+[node name="RichTextLabel3" type="RichTextLabel" parent="Debug texts"]
+offset_left = 640.0
+offset_right = 720.0
+offset_bottom = 24.0
+text = "screen 2"
+metadata/_edit_use_anchors_ = true
 
-[node name="ScreenLoader" type="Area2D" parent="Screen 0/screen collisions"]
-script = ExtResource("4_1v0hb")
-GOTO_X = 425
-GOTO_Y = 50
-TRANSITION_TYPE = "Horizontal"
+[node name="RichTextLabel4" type="RichTextLabel" parent="Debug texts"]
+offset_left = 960.0
+offset_right = 1040.0
+offset_bottom = 24.0
+text = "screen 3"
+metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen 0/screen collisions/ScreenLoader"]
-position = Vector2(154, 0)
-shape = SubResource("RectangleShape2D_b7mgl")
+[node name="RichTextLabel5" type="RichTextLabel" parent="Debug texts"]
+offset_left = 320.0
+offset_top = -256.0
+offset_right = 400.0
+offset_bottom = -232.0
+text = "screen 1"
+metadata/_edit_use_anchors_ = true
 
-[node name="CameraHandler" type="Node2D" parent="Screen 0"]
+[node name="RichTextLabel6" type="RichTextLabel" parent="Debug texts"]
+offset_left = 640.0
+offset_top = -256.0
+offset_right = 720.0
+offset_bottom = -232.0
+text = "screen 2"
+metadata/_edit_use_anchors_ = true
 
-[node name="Camera2D" type="Camera2D" parent="Screen 0/CameraHandler"]
-enabled = false
+[node name="RichTextLabel7" type="RichTextLabel" parent="Debug texts"]
+offset_left = 960.0
+offset_top = -256.0
+offset_right = 1040.0
+offset_bottom = -232.0
+text = "screen 3"
+metadata/_edit_use_anchors_ = true
 
-[node name="Area2D" type="Area2D" parent="Screen 0/CameraHandler"]
-script = ExtResource("5_tbdrq")
+[node name="Debug texts2" type="Node2D" parent="."]
+position = Vector2(8, -256)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen 0/CameraHandler/Area2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_1audv")
+[node name="RichTextLabel" type="RichTextLabel" parent="Debug texts2"]
+offset_left = -8.0
+offset_top = -72.0
+offset_right = 248.0
+offset_bottom = 240.0
+text = "Все комнаты расположены по сетке, готовые префабы лежат в ~/prefabs/rooms/(есть не все возможные). буква после названия комнаты - то, куда из нее есть переходы. (left, right, up, down)
+можно вручную поставить точку куда переправить игрока через GoTo в объекте TransitionTrigger.
+Все комнаты наследуют ~/prefabs/room_mother"
 
-[node name="Screen 1" type="Node2D" parent="."]
-position = Vector2(541, 96)
-rotation = 3.14159
+[node name="RoomLRUD" parent="." instance=ExtResource("4_fli2s")]
+position = Vector2(320, 0)
 
-[node name="scene background placeholder" type="Sprite2D" parent="Screen 1"]
-z_index = -10
-texture = ExtResource("4_ab1uh")
+[node name="RoomLR" parent="." instance=ExtResource("5_j5fag")]
+position = Vector2(640, 0)
 
-[node name="screen collisions" type="StaticBody2D" parent="Screen 1"]
+[node name="RoomL2" parent="." instance=ExtResource("6_f87wv")]
+position = Vector2(960, 0)
 
-[node name="room walls" type="CollisionPolygon2D" parent="Screen 1/screen collisions"]
-editor_description = "im inside your walls, beatch"
-position = Vector2(-130, -104)
-polygon = PackedVector2Array(3, -2, 1, 8, 2, 200, 258, 200, 310, 200, 310, 167, 309, 8, 259, 9, 2, 8, 4, -4, 339, -13, 331, 208, -40, 223, -4, 7)
+[node name="RoomDR" parent="." instance=ExtResource("7_bw4kc")]
+position = Vector2(320, -256)
 
-[node name="ScreenLoader" type="Area2D" parent="Screen 1/screen collisions"]
-script = ExtResource("4_1v0hb")
-GOTO_X = 240
-GOTO_Y = 50
-TRANSITION_TYPE = "Horizontal"
+[node name="Room_R" parent="." instance=ExtResource("3_w7jdg")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen 1/screen collisions/ScreenLoader"]
-position = Vector2(154, -0.999611)
-shape = SubResource("RectangleShape2D_b7mgl")
+[node name="RoomL" parent="." instance=ExtResource("6_f87wv")]
+position = Vector2(640, -256)
 
-[node name="CameraHandler" type="Node2D" parent="Screen 1"]
-
-[node name="Camera2D" type="Camera2D" parent="Screen 1/CameraHandler"]
-enabled = false
-
-[node name="Area2D" type="Area2D" parent="Screen 1/CameraHandler"]
-script = ExtResource("5_tbdrq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen 1/CameraHandler/Area2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_1audv")
-
-[connection signal="body_entered" from="Screen 0/screen collisions/ScreenLoader" to="Screen 0/screen collisions/ScreenLoader" method="_on_body_entered"]
-[connection signal="body_entered" from="Screen 0/CameraHandler/Area2D" to="Screen 0/CameraHandler/Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="Screen 0/CameraHandler/Area2D" to="Screen 0/CameraHandler/Area2D" method="_on_body_exited"]
-[connection signal="body_entered" from="Screen 1/screen collisions/ScreenLoader" to="Screen 1/screen collisions/ScreenLoader" method="_on_body_entered"]
-[connection signal="body_entered" from="Screen 1/CameraHandler/Area2D" to="Screen 1/CameraHandler/Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="Screen 1/CameraHandler/Area2D" to="Screen 1/CameraHandler/Area2D" method="_on_body_exited"]
+[node name="RoomU" parent="." instance=ExtResource("8_pw2j1")]
+position = Vector2(320, 256)

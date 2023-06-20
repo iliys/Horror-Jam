@@ -1,19 +1,31 @@
 extends Area2D
 
-@export var GOTO_X: int 
-@export var GOTO_Y: int 
-@export_enum("Horizontal", "Vertical", "Exact") var TRANSITION_TYPE: String = "Exact"
+@export_enum("Horizontal", "Vertical", "GoTo") var TRANSITION_TYPE: String = "GoTo"
+@export_enum("+","-") var TRANSITION_DIR: String = "+"
+@export var GOTO_X: int = 0
+@export var GOTO_Y: int = 0
+
 @onready var camera = $"../../Camera2D"
 
 func _on_body_entered(body):
 	if body.name == "Player":
 		match TRANSITION_TYPE:
 			"Horizontal":
-				body.position.x=GOTO_X
+				if(TRANSITION_DIR=="+"):
+					body.position.x+=80
+				else:
+					body.position.x-=80
 			"Vertical":
-				body.position.y=GOTO_Y
-			"Exact":
+				if(TRANSITION_DIR=="+"):
+					body.position.y+=80
+				else:
+					body.position.y-=80
+			"GoTo":
 				body.position.x=GOTO_X
 				body.position.y=GOTO_Y
-		print(body.name)
+		
 
+
+
+func _on_body_exited(body):
+	pass # Replace with function body.
