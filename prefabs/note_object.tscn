@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://de84u8pq4kyca"]
+
+[ext_resource type="PackedScene" uid="uid://bs8cy42fly2f8" path="res://prefabs/point_of_interest.tscn" id="1_7lvw1"]
+[ext_resource type="Texture2D" uid="uid://qr2q1ple0l51" path="res://images/note.png" id="2_5jfgh"]
+
+[node name="NoteObject" instance=ExtResource("1_7lvw1")]
+POI_TYPE = "Note"
+
+[node name="Note" type="Node2D" parent="." index="1"]
+visible = false
+
+[node name="Image" type="Sprite2D" parent="Note" index="0"]
+texture = ExtResource("2_5jfgh")

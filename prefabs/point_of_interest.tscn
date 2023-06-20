@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs8cy42fly2f8"]
+
+[ext_resource type="Script" path="res://scripts/PoI.gd" id="1_sjqs1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ss8g3"]
+radius = 8.0
+
+[node name="Point of interest" type="Area2D"]
+script = ExtResource("1_sjqs1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ss8g3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
