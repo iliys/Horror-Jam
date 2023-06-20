@@ -15,9 +15,12 @@ func _physics_process(delta):
 		velocity=Vector2.ZERO
 	move_and_collide(velocity * SPEED) # если дельту поставить то хуже будет
 
+func _unhandled_input(input):
+	if input.is_action_pressed("Action"):
+		action()
 
-
-
+func action():
+	pass
 
 
 
