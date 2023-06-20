@@ -10,7 +10,7 @@
 size = Vector2(12, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7mgl"]
-size = Vector2(46, 157)
+size = Vector2(46, 190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1audv"]
 size = Vector2(250, 187)
@@ -42,15 +42,16 @@ texture = ExtResource("4_ab1uh")
 [node name="room walls" type="CollisionPolygon2D" parent="Screen 0/screen collisions"]
 editor_description = "im inside your walls, beatch"
 position = Vector2(-130, -104)
-polygon = PackedVector2Array(3, -2, 1, 8, 2, 200, 258, 200, 258, 168, 310, 167, 309, 8, 259, 9, 2, 8, 4, -4, 339, -13, 331, 208, -40, 223, -4, 7)
+polygon = PackedVector2Array(3, -2, 1, 8, 2, 200, 258, 200, 310, 200, 310, 167, 309, 8, 259, 9, 2, 8, 4, -4, 339, -13, 331, 208, -40, 223, -4, 7)
 
 [node name="ScreenLoader" type="Area2D" parent="Screen 0/screen collisions"]
 script = ExtResource("4_1v0hb")
-GOTO_X = 490
+GOTO_X = 425
 GOTO_Y = 50
+TRANSITION_TYPE = "Horizontal"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen 0/screen collisions/ScreenLoader"]
-position = Vector2(154, -16.5)
+position = Vector2(154, 0)
 shape = SubResource("RectangleShape2D_b7mgl")
 
 [node name="CameraHandler" type="Node2D" parent="Screen 0"]
@@ -78,15 +79,16 @@ texture = ExtResource("4_ab1uh")
 [node name="room walls" type="CollisionPolygon2D" parent="Screen 1/screen collisions"]
 editor_description = "im inside your walls, beatch"
 position = Vector2(-130, -104)
-polygon = PackedVector2Array(3, -2, 1, 8, 2, 200, 258, 200, 258, 168, 310, 167, 309, 8, 259, 9, 2, 8, 4, -4, 339, -13, 331, 208, -40, 223, -4, 7)
+polygon = PackedVector2Array(3, -2, 1, 8, 2, 200, 258, 200, 310, 200, 310, 167, 309, 8, 259, 9, 2, 8, 4, -4, 339, -13, 331, 208, -40, 223, -4, 7)
 
 [node name="ScreenLoader" type="Area2D" parent="Screen 1/screen collisions"]
 script = ExtResource("4_1v0hb")
-GOTO_X = 190
+GOTO_X = 240
 GOTO_Y = 50
+TRANSITION_TYPE = "Horizontal"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen 1/screen collisions/ScreenLoader"]
-position = Vector2(154, -16.5)
+position = Vector2(154, -0.999611)
 shape = SubResource("RectangleShape2D_b7mgl")
 
 [node name="CameraHandler" type="Node2D" parent="Screen 1"]
