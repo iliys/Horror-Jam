@@ -7,6 +7,7 @@
 size = Vector2(256, 192)
 
 [node name="RoomMother" type="Node2D"]
+z_index = -5
 
 [node name="scene bg placeholder" type="Sprite2D" parent="."]
 z_index = -10

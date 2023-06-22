@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
+
+
 const SPEED = 2 # по углам колбасит
 #потом починю. может быть. 
 # а может это из за пп и комично маленького количества пикселей на экране
 var keys = []
 var in_interactable_zone = false
 var near = null
+
+@onready var UI = $"../UI"
 #var cur_interaction = ""
 
 func _physics_process(delta):
@@ -30,6 +34,7 @@ func action():
 				print(near.KeyID)
 				keys.append(near.KeyID)
 				#near.set_process(false)
+				UI.key2inv(near.KeyID)
 				near.process_mode = 4
 				near.hide()
 				

@@ -5,7 +5,7 @@ extends Area2D
 @export var GOTO_X: int = 0
 @export var GOTO_Y: int = 0
 
-@onready var camera = $"../../Camera2D"
+#@onready var camera = $"../../Camera2D"
 
 func _on_body_entered(body):
 	if body.name == "Player":
