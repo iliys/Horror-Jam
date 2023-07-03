@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 
 const SPEED = 2 # по углам колбасит
-#потом починю. может быть. 
+# потом починю. может быть. 
 # а может это из за пп и комично маленького количества пикселей на экране
 var keys = []
 var in_interactable_zone = false
@@ -29,26 +29,7 @@ func _unhandled_input(input):
 
 func action():
 	if (in_interactable_zone):
-		match near.POI_TYPE:
-			"Key":
-				print(near.KeyID)
-				keys.append(near.KeyID)
-				#near.set_process(false)
-				UI.key2inv(near.KeyID)
-				near.process_mode = 4
-				near.hide()
-				
-		match near.POI_TYPE:
-			"Door":
-				if near.KeyID in keys:
-					near.open_door()
-				else:
-					attack()
-			"Note":
-				if near.noteimg.is_visible_in_tree() == false:
-					near.show_note()
-				else:
-					near.hide_note()
+		near.interact()
 	else:
 		attack()
 func attack():

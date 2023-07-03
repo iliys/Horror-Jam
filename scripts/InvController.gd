@@ -5,5 +5,5 @@ func _onready():
 
 func key2inv(keyID:String):
 	self.get_node("Margin/Inventory").get_node(keyID).show()
-	print("gotnigger")
+
 	

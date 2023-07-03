@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cv6me03xyrfkm"]
+[gd_scene load_steps=14 format=3 uid="uid://cv6me03xyrfkm"]
 
 [ext_resource type="PackedScene" uid="uid://h0oc1ilf7rlm" path="res://player.tscn" id="2_btmsj"]
 [ext_resource type="Texture2D" uid="uid://d3ic220t2l0rj" path="res://textures/test_Hostile.png" id="2_n7tot"]
@@ -11,9 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://oor4foa5baab" path="res://prefabs/door.tscn" id="9_jww0l"]
 [ext_resource type="PackedScene" uid="uid://dnc15vifg1ogu" path="res://prefabs/key.tscn" id="10_0wne7"]
 [ext_resource type="PackedScene" uid="uid://c1m8h3n8gau2n" path="res://UI/ui.tscn" id="11_tr3c1"]
-[ext_resource type="Texture2D" uid="uid://dkqm1hfdwyl2j" path="res://images/key1.png" id="13_epi70"]
-[ext_resource type="Texture2D" uid="uid://ph4jhm2f4fw5" path="res://images/key2.png" id="14_32nms"]
-[ext_resource type="Texture2D" uid="uid://bbm4inmx7hyfp" path="res://images/key3.png" id="15_24hbs"]
+[ext_resource type="PackedScene" uid="uid://de84u8pq4kyca" path="res://prefabs/note_object.tscn" id="12_v7lxp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvuyr"]
 size = Vector2(12, 9)
@@ -99,59 +97,8 @@ text = "Все комнаты расположены по сетке, готов
 можно вручную поставить точку куда переправить игрока через GoTo в объекте TransitionTrigger.
 Все комнаты наследуют ~/prefabs/room_mother"
 
-[node name="RoomLRUD" parent="." instance=ExtResource("4_fli2s")]
-z_index = 0
-position = Vector2(320, 0)
-
-[node name="RoomLR" parent="." instance=ExtResource("5_j5fag")]
-z_index = 0
-position = Vector2(640, 0)
-
-[node name="RoomL2" parent="." instance=ExtResource("6_f87wv")]
-z_index = 0
-position = Vector2(960, 0)
-
-[node name="RoomDR" parent="." instance=ExtResource("7_bw4kc")]
-z_index = 0
-position = Vector2(320, -256)
-
-[node name="Room_R" parent="." instance=ExtResource("3_w7jdg")]
-z_index = 0
-
-[node name="RoomL" parent="." instance=ExtResource("6_f87wv")]
-z_index = 0
-position = Vector2(640, -256)
-
-[node name="RoomU" parent="." instance=ExtResource("8_pw2j1")]
-z_index = 0
-position = Vector2(320, 256)
-
 [node name="DoorObject" parent="." instance=ExtResource("9_jww0l")]
 position = Vector2(32, 104)
-
-[node name="Key" parent="." instance=ExtResource("10_0wne7")]
-position = Vector2(72, 72)
-
-[node name="Key2" parent="." instance=ExtResource("10_0wne7")]
-position = Vector2(96, 64)
-KeyID = "1"
-
-[node name="Key" parent="Key2" index="1"]
-texture = ExtResource("13_epi70")
-
-[node name="Key3" parent="." instance=ExtResource("10_0wne7")]
-position = Vector2(120, 72)
-KeyID = "2"
-
-[node name="Key" parent="Key3" index="1"]
-texture = ExtResource("14_32nms")
-
-[node name="Key4" parent="." instance=ExtResource("10_0wne7")]
-position = Vector2(144, 64)
-KeyID = "3"
-
-[node name="Key" parent="Key4" index="1"]
-texture = ExtResource("15_24hbs")
 
 [node name="UI" parent="." instance=ExtResource("11_tr3c1")]
 anchors_preset = 4
@@ -182,7 +129,32 @@ visible = false
 [node name="3" parent="UI/Margin/Inventory" index="3"]
 visible = false
 
-[editable path="Key2"]
-[editable path="Key3"]
-[editable path="Key4"]
+[node name="Room_R" parent="." instance=ExtResource("3_w7jdg")]
+
+[node name="RoomLRUD" parent="." instance=ExtResource("4_fli2s")]
+position = Vector2(320, 0)
+
+[node name="RoomLR" parent="." instance=ExtResource("5_j5fag")]
+position = Vector2(640, 0)
+
+[node name="RoomL" parent="." instance=ExtResource("6_f87wv")]
+position = Vector2(960, 0)
+
+[node name="RoomDR" parent="." instance=ExtResource("7_bw4kc")]
+position = Vector2(320, -256)
+
+[node name="RoomL2" parent="." instance=ExtResource("6_f87wv")]
+position = Vector2(640, -256)
+
+[node name="RoomU" parent="." instance=ExtResource("8_pw2j1")]
+position = Vector2(320, 256)
+
+[node name="Key" parent="." instance=ExtResource("10_0wne7")]
+position = Vector2(72, 64)
+
+[node name="NoteObject" parent="." instance=ExtResource("12_v7lxp")]
+position = Vector2(88, 80)
+
 [editable path="UI"]
+[editable path="Room_R"]
+[editable path="Room_R/Collision and transition handler/Area2D"]

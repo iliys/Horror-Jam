@@ -1,17 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://oor4foa5baab"]
+[gd_scene load_steps=6 format=3 uid="uid://oor4foa5baab"]
 
 [ext_resource type="PackedScene" uid="uid://bs8cy42fly2f8" path="res://prefabs/point_of_interest.tscn" id="1_ynoso"]
+[ext_resource type="Script" path="res://scripts/door.gd" id="2_fqdm0"]
 [ext_resource type="Texture2D" uid="uid://dh2x8c0ymgd7g" path="res://images/block.png" id="2_nyeau"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d76xn"]
 size = Vector2(16, 48)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cgycg"]
-radius = 24.0
+radius = 32.0
 
 [node name="DoorObject" instance=ExtResource("1_ynoso")]
-POI_TYPE = "Door"
-KeyID = "0"
+script = ExtResource("2_fqdm0")
+KeyID = ""
 
 [node name="CollisionShape2D" parent="." index="0"]
 disabled = true

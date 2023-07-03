@@ -22,6 +22,7 @@ texture = ExtResource("1_qby8j")
 position = Vector2(128, 96)
 
 [node name="Camera2D" type="Camera2D" parent="CameraHandler"]
+visible = false
 enabled = false
 
 [node name="CameraChecker" type="Area2D" parent="CameraHandler"]
