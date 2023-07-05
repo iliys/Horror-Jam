@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsqevt3ghplyq"]
+
+[ext_resource type="Script" path="res://scripts/CameraController.gd" id="1_w42gx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_erky4"]
+size = Vector2(256, 192)
+
+[node name="CameraHandler" type="Node2D"]
+position = Vector2(128, 96)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+enabled = false
+
+[node name="CameraChecker" type="Area2D" parent="."]
+script = ExtResource("1_w42gx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraChecker"]
+shape = SubResource("RectangleShape2D_erky4")
+
+[connection signal="body_entered" from="CameraChecker" to="CameraChecker" method="_on_body_entered"]
+[connection signal="body_exited" from="CameraChecker" to="CameraChecker" method="_on_body_exited"]

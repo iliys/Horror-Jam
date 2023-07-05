@@ -1,10 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0hdrj1r7xpjx"]
+[gd_scene load_steps=2 format=3 uid="uid://c0hdrj1r7xpjx"]
 
 [ext_resource type="Texture2D" uid="uid://cnvkqg0il5l58" path="res://images/win.png" id="1_qby8j"]
-[ext_resource type="Script" path="res://scripts/CameraController.gd" id="2_wc3k8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_erky4"]
-size = Vector2(256, 192)
 
 [node name="RoomMother" type="Node2D"]
 z_index = -5
@@ -17,19 +13,3 @@ texture = ExtResource("1_qby8j")
 [node name="Collision and transition handler" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision and transition handler"]
-
-[node name="CameraHandler" type="Node2D" parent="."]
-position = Vector2(128, 96)
-
-[node name="Camera2D" type="Camera2D" parent="CameraHandler"]
-visible = false
-enabled = false
-
-[node name="CameraChecker" type="Area2D" parent="CameraHandler"]
-script = ExtResource("2_wc3k8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraHandler/CameraChecker"]
-shape = SubResource("RectangleShape2D_erky4")
-
-[connection signal="body_entered" from="CameraHandler/CameraChecker" to="CameraHandler/CameraChecker" method="_on_body_entered"]
-[connection signal="body_exited" from="CameraHandler/CameraChecker" to="CameraHandler/CameraChecker" method="_on_body_exited"]
